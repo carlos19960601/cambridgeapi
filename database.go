@@ -9,7 +9,7 @@ import (
 	"gorm.io/gorm"
 )
 
-func (c *Client) RebuildDatabase(filepath string) error {
+func (c *client) RebuildDatabase(filepath string) error {
 	_, err := os.Stat(filepath)
 	if err != nil && !os.IsNotExist(err) {
 		return err

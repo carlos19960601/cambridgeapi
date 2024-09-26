@@ -19,7 +19,7 @@ func TestQuery(t *testing.T) {
 	}
 
 	data, _ := json.Marshal(w)
-	c.log.Info().RawJSON("word", data).Msg("result")
+	t.Logf("result: %s", string(data))
 
 	_, err = c.Query("crashx")
 	if err == nil {

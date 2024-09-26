@@ -11,13 +11,18 @@ const (
 	baseUrl = "https://dictionary.cambridge.org"
 )
 
-type Client struct {
+type Client interface {
+	Query(q string) (*Word, error)
+	RebuildDatabase(filepath string) error
+}
+
+type client struct {
 	log      zerolog.Logger
 	collecor *colly.Collector
 }
 
-func New() *Client {
-	return &Client{
+func New() Client {
+	return &client{
 		log: zerolog.New(zerolog.ConsoleWriter{Out: os.Stderr}).With().Timestamp().Logger(),
 		collecor: colly.NewCollector(
 			colly.AllowedDomains("dictionary.cambridge.org"),

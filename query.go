@@ -11,7 +11,7 @@ const (
 	detailPath = "/dictionary/english-chinese-simplified/%s"
 )
 
-func (c *Client) Query(q string) (*Word, error) {
+func (c *client) Query(q string) (*Word, error) {
 	urlResult, err := url.JoinPath(baseUrl, fmt.Sprintf(detailPath, q))
 	if err != nil {
 		return nil, err
@@ -44,7 +44,7 @@ func (c *Client) Query(q string) (*Word, error) {
 	return res, nil
 }
 
-func (c *Client) handleWordEntry(e *colly.HTMLElement, wordEntry *WordEntry) {
+func (c *client) handleWordEntry(e *colly.HTMLElement, wordEntry *WordEntry) {
 	wordEntry.Entry = e.ChildText("span.hw.dhw")
 	wordEntry.POS = e.ChildText("span.pos.dpos")
 
