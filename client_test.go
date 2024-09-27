@@ -13,7 +13,7 @@ func TestRebuildDatabase(t *testing.T) {
 
 func TestQuery(t *testing.T) {
 	c := New()
-	w, err := c.Query("bridesmaid")
+	w, err := c.Query("commitment")
 	if err != nil {
 		t.Error(err)
 	}

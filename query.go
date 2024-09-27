@@ -72,7 +72,7 @@ func (c *client) handleWordEntry(e *colly.HTMLElement, wordEntry *WordEntry) {
 			defBlock.Gram = h.ChildText("span.gram.dgram")
 			defBlock.Usage = h.ChildText("span.usage.dusage")
 			defBlock.Text = h.ChildText("div.def.ddef_d")
-			defBlock.Translation = h.ChildText("span.trans.dtrans")
+			defBlock.Translation = h.ChildText("span.trans.dtrans:not(.hdb)")
 
 			examples := make([]*Example, 0)
 			h.ForEach("div.examp.dexamp", func(i int, h *colly.HTMLElement) {
